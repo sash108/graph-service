@@ -1,0 +1,35 @@
+<!--
+ An example topology XML file
+ for the 'ShortestPath' programming exercise.
+ 16 April 2016
+ -->
+
+<topology>
+  <entities>
+    <class key="Transceiver">
+      <entity key="T/2345"/>
+      <entity key="T/2347"/>
+      <entity key="T/0032"/>
+      <entity key="T/0031"/>
+    </class>
+    <class key="Link">
+      <entity key="Bartrum-X5"/>
+      <entity key="Whisper-A4"/>
+      <entity key="Matfold-A4"/>
+    </class>
+    <class key="Fibre">
+      <entity key="X7898980"/>
+      <entity key="M60"/>
+    </class>
+  </entities>
+  <associations>
+    <association primary="T/2345" secondary="Bartrum-X5"/>
+    <association primary="T/2347" secondary="Bartrum-X5"/>
+    <association primary="Bartrum-X5" secondary="X7898980"/>
+    <association primary="Bartrum-X5" secondary="M60"/>
+    <association primary="X7898980" secondary="Whisper-A4"/>
+    <association primary="M60" secondary="Matfold-A4"/>
+    <association primary="Whisper-A4" secondary="T/0032"/>
+    <association primary="Matfold-A4" secondary="T/0031"/>
+  </associations>
+</topology>

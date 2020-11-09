@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+
+<!--
+ An examples topology XSD (Schema) file
+ for the 'ShortestPath' programming exercise.
+ 16 April 2016
+ -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <xs:element name="topology">
+
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="entities" minOccurs="1">
+
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              A topology consists of 'entities', grouped by 'class',
+              that are optionally connected together by an 'association'
+              between a 'primary' and 'secondary' entity. The topology forms
+              a directed network of paths between primary and secondary
+              entities.
+
+              Isolated entities, entities that do not feature in
+              an association, are permitted.
+
+              Entity keys are required to be unique. You will not find
+              the same entity in two different classes.
+            </xs:documentation>
+          </xs:annotation>
+
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="class" minOccurs="1" maxOccurs="unbounded">
+
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">
+                    The class, defined by a 'key', groups entities together
+                    based on a classification. Entity 'Port-17' might be
+                    of class 'USB Port' for example.
+                  </xs:documentation>
+                </xs:annotation>
+
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="entity" minOccurs="1" maxOccurs="unbounded">
+
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                          An entity instance is defined using a 'key' that
+                          must be unique within the topology.
+                        </xs:documentation>
+                      </xs:annotation>
+
+                      <xs:complexType>
+                        <xs:attribute name="key" type="xs:string" use="required"/>
+                      </xs:complexType>
+
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="key" type="xs:string"  use="required"/>
+                </xs:complexType>
+
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+
+        </xs:element>
+
+        <xs:element name="associations" minOccurs="0">
+
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              The 'associations' tag begins a series of individual
+              entity associations.
+            </xs:documentation>
+          </xs:annotation>
+
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="association" minOccurs="1" maxOccurs="unbounded">
+
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">
+                    An individual association linking two entities.
+                    The association defines a unidirectional connection between
+                    a 'primary' and 'secondary' entity where passage from
+                    'secondary to 'primary is not permitted.
+                  </xs:documentation>
+                </xs:annotation>
+
+                <xs:complexType>
+                  <xs:attribute name="primary" type="xs:string" use="required"/>
+                  <xs:attribute name="secondary" type="xs:string" use="required"/>
+                </xs:complexType>
+
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+
+        </xs:element>
+
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
