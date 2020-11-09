@@ -1,9 +1,11 @@
 # Graph Shortest path utility 
 
 # How to run
+
      // Download solution and save it to your drive.
      
      git clone https://github.com/logical-dev/graph-service.git
+     cd graph-service/
      mvn clean install
      java -jar target/service-graph-0.0.1-SNAPSHOT.jar 
      
